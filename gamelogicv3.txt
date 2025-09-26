@@ -1,0 +1,477 @@
+CHUCKSTEROIDS V3 - COMPLETE GAME MECHANICS DOCUMENTATION
+========================================================
+
+GAME OVERVIEW
+=============
+Chucksteroids is an enhanced Asteroids-style game featuring:
+- Advanced physics with time dilation (Superhot-style)
+- Complex UFO AI with multiple personality types
+- Dual ability system with charging mechanics
+- Dynamic particle effects and visual systems
+- Procedural music generation
+- Screen wrapping collision detection
+- Multi-layered scoring and progression systems
+
+CORE CONSTANTS & CONFIGURATION
+==============================
+
+Display Settings:
+- SCREEN_WIDTH: 1000 pixels (25% bigger than original 800)
+- SCREEN_HEIGHT: 750 pixels (25% bigger than original 600)
+- FPS: 60 frames per second
+- RESIZABLE: True (window can be resized)
+- MIN_WIDTH: 400 pixels (minimum window width)
+- MIN_HEIGHT: 300 pixels (minimum window height)
+
+Colors:
+- BLACK: (0, 0, 0)
+- WHITE: (255, 255, 255)
+- GREEN: (0, 255, 0)
+- RED: (255, 0, 0)
+- YELLOW: (255, 255, 0)
+- CYAN: (0, 255, 255)
+
+VECTOR MATHEMATICS SYSTEM
+=========================
+
+Vector2D Class:
+- x, y: Position components
+- __add__: Vector addition
+- __sub__: Vector subtraction
+- __mul__: Scalar multiplication
+- magnitude(): Returns sqrt(x² + y²)
+- normalize(): Returns unit vector (magnitude = 1)
+- rotate(angle): Rotates vector by given angle using:
+  - cos_a = cos(angle)
+  - sin_a = sin(angle)
+  - new_x = x * cos_a - y * sin_a
+  - new_y = x * sin_a + y * cos_a
+
+PHYSICS & MOVEMENT MECHANICS
+============================
+
+GameObject Base Class:
+- position: Vector2D(x, y)
+- velocity: Vector2D(vx, vy)
+- angle: Rotation angle in radians
+- active: Boolean state
+- update(): Applies velocity to position with screen wrapping
+
+Screen Wrapping Logic:
+- Horizontal: if x < 0: x = width; if x > width: x = 0
+- Vertical: if y < 0: y = height; if y > height: y = 0
+- Corner wrapping: Handles objects crossing both edges simultaneously
+
+SHIP MECHANICS
+==============
+
+Ship Properties:
+- radius: 15 pixels (50% increase from original 10)
+- thrust_power: 281.25 units/second² (2x increase from 140.625)
+- rotation_speed: 5 radians/second
+- max_speed: 1,000,000,000 units/second (10x increase from 100M)
+- invulnerable_time: 3.0 seconds (spawn protection)
+
+Movement System:
+- Forward Thrust: Vector2D(thrust_power, 0).rotate(angle)
+- Reverse Thrust: Vector2D(-thrust_power, 0).rotate(angle)
+- Strafe Left: Vector2D(0, -thrust_power).rotate(angle)
+- Strafe Right: Vector2D(0, thrust_power).rotate(angle)
+
+Acceleration Multiplier System:
+- Below 50% speed: 1.25x acceleration (25% boost)
+- 50-100% speed: Linear interpolation from 1.0x to 0.1x
+- At/above 100% speed: 0.1x acceleration (10% of normal)
+
+Speed Decay System:
+- Normal decay rate: 0.275 (72.5% speed retained per second)
+- Below 10% speed: decay_rate^4 (much faster decay)
+- Only applies when not thrusting
+
+Rate of Fire Progression:
+- Starting interval: 0.09 seconds (11.1 shots/sec)
+- Peak interval: 0.042 seconds (23.8 shots/sec)
+- Max interval: 0.17 seconds (5.9 shots/sec)
+- Curve duration: 11.38 seconds total
+- Peak time: 2.0 seconds to reach maximum speed
+- Progression formula: Uses exponential curve based on shooting time
+
+Shield System:
+- Max shields: 3 hits
+- Recharge time: 3.0 seconds per hit
+- Shield damage visual: 1.0 second duration
+- Recharge pulse effect: 1.0 second duration
+
+Ability System:
+- Max charges: 2 abilities
+- Charge duration: 10.0 seconds per ability
+- First charge (new game): 5.0 seconds
+- Abilities: Q (Time Blast), E (Shield Recharge), B (Both)
+
+BULLET MECHANICS
+================
+
+Bullet Properties:
+- max_distance: 1000 units (distance-based expiration)
+- distance_traveled: Tracks total movement
+- is_ufo_bullet: Boolean for different bullet types
+
+Velocity-Based Scaling:
+- 300 units/sec: 0.75x size
+- 400 units/sec: 1.0x size (baseline)
+- 500 units/sec: 1.5x size
+- Linear interpolation between breakpoints
+
+Bullet Dimensions:
+- Base width: 16 pixels
+- Base height: 8 pixels
+- Scaled dimensions: base * velocity_scale
+- Hitbox radius: max(2, min(scaled_width, scaled_height) // 2)
+
+ASTEROID MECHANICS
+==================
+
+Asteroid Size Hierarchy:
+- Size 9 (XXXL): 7.5x scale, 1/10 speed, 0.1x rotation
+- Size 8 (XXL): 6.0x scale, 3/10 speed, 0.2x rotation
+- Size 7 (XL): 4.5x scale, 5/10 speed, 0.3x rotation
+- Size 6 (L): 3.0x scale, 7/10 speed, 0.4x rotation
+- Size 5 (M): 1.5x scale, 9/10 speed, 0.5x rotation
+- Size 4 (S): 1.0x scale, 1.0x speed, 0.6x rotation
+- Size 3 (XS): 0.75x scale, 1.5x speed, 0.7x rotation
+- Size 2 (XXS): 0.5x scale, 2.0x speed, 0.8x rotation
+- Size 1 (XXXS): 0.25x scale, 2.5x speed, 0.9x rotation
+
+Asteroid Properties:
+- Base radius: 50 pixels
+- Hitbox reduction: 7.5% smaller than visual
+- Base speed range: 50-150 units/sec (25% slower)
+- Rotation: Random -2 to +2 radians/sec (scaled by size)
+- Shape generation: 8 + size*2 points with 0.6-1.4x radius variation
+
+Asteroid Splitting:
+- When hit by bullet: Creates 2 smaller asteroids
+- When hit by UFO: Creates 2 smaller asteroids
+- Size reduction: Each split reduces size by 1
+- Velocity inheritance: New asteroids inherit projectile velocity + random component
+
+UFO AI SYSTEM
+=============
+
+UFO Personality Types:
+1. Aggressive: Direct pursuit, high threat response
+2. Defensive: Maintains distance, retreats when threatened
+3. Tactical: Flanking maneuvers, strategic positioning
+4. Swarm: Coordinates with other UFOs
+5. Deadly: Enhanced stats, perfect accuracy, faster shooting
+
+UFO Base Properties:
+- radius: 20 pixels
+- speed: 100 units/sec
+- max_speed: 150 units/sec
+- shoot_interval: 1.0 second
+- accuracy_modifier: 0.75 (75% accuracy) or 1.0 (100% accuracy)
+
+Deadly UFO Enhancements:
+- speed: 120 units/sec (+20%)
+- max_speed: 180 units/sec (+20%)
+- shoot_interval: 0.7 seconds (+30% faster)
+- accuracy_modifier: 1.5 (150% accuracy)
+- aggression_level: 2.0 (double aggression)
+
+AI Behavior Weights:
+- seek: Move toward player
+- flee: Move away from player
+- flank: Move to flanking position
+- swarm: Coordinate with other UFOs
+- patrol: Random patrol movement
+- intercept: Predict and intercept player
+- evade: Avoid player bullets
+- avoid_asteroids: Avoid asteroid collisions
+
+Threat Level Calculation (0.0 to 1.0):
+- Distance to player: <100 units = +0.4, <200 units = +0.2
+- Player bullets nearby: <50 units = +0.3, <100 units = +0.1
+- Player speed: >800 units/sec = +0.3, >400 units/sec = +0.1
+
+Opportunity Level Calculation (0.0 to 1.0):
+- Player speed: <200 units/sec = +0.4, <400 units/sec = +0.2
+- Nearby asteroids: >2 within 200 units = +0.3
+
+Predictive Aiming:
+- Calculates bullet travel time: distance / bullet_speed
+- Predicts player position: current_pos + velocity * travel_time
+- Applies accuracy modifier: base_angle ± random_offset * (1 - accuracy)
+
+COLLISION DETECTION SYSTEM
+==========================
+
+Screen Wrapping Collision:
+- Checks all possible wrapped positions for each object
+- Horizontal wrapping: x < radius or x > width - radius
+- Vertical wrapping: y < radius or y > height - radius
+- Corner wrapping: Both horizontal and vertical conditions
+
+Collision Types:
+1. Bullet vs Asteroid: Destroys asteroid, creates explosion, adds score
+2. Bullet vs UFO: Destroys UFO, creates explosion, adds score
+3. Ship vs Asteroid: Shield hit or ship destruction
+4. Ship vs UFO: Shield hit or ship destruction
+5. Ship vs UFO Bullet: Shield hit or ship destruction
+6. UFO vs Asteroid: UFO breaks asteroid (100% success)
+7. UFO Bullet vs Asteroid: 100% blockable, 10% chance to break
+
+Screen Shake System:
+- Asteroid destruction: Size 5+ only, intensity 5-12 based on size
+- UFO destruction: Intensity 8, duration 0.5 seconds
+- Ship destruction: Intensity 7, duration 0.6 seconds
+- Shield hits: Intensity 1-5 based on remaining shields
+
+SCORING SYSTEM
+==============
+
+Point Values:
+- Asteroid destruction: size * 100 points
+- UFO destruction: 200 points
+- Shield destruction: size * 50 points (asteroid), 100 points (UFO)
+
+Score Pulse Effect:
+- Duration: 0.1 + (points/100) * 0.1 seconds (max 3.0 seconds)
+- Intensity: points/1000 (max 1.0)
+- Visual: 50% to 100% opacity, 1.0x to 3.0x size scaling
+
+Achievement System:
+- "Spinning Trick": 10+ full rotations in one direction
+- "Interstellar": 11.38 seconds at 100% max speed
+
+LEVEL PROGRESSION SYSTEM
+========================
+
+Level Transition:
+- Pause duration: 2.0 seconds
+- Flash duration: 2.0 seconds
+- Flash count: Tracks number of flashes
+
+Asteroid Spawning:
+- Level 1: 4 large asteroids (sizes 7, 8, 9)
+- Level 2+: 2 + level asteroids
+- Large sizes: [9, 8, 7] (XXXL, XXL, XL)
+- Medium sizes: [6, 5, 4] (L, M, S)
+- Small sizes: [3, 2, 1] (XS, XXS, XXXS)
+
+UFO Spawning:
+- Initial delay: 5.0 seconds
+- Spawn interval: 1.0 second between UFOs
+- Level-based personality selection with 50% deadly chance
+- Mass spawn: 10% chance for spawns from all corners
+
+UFO Spawn Patterns by Level:
+- Level 1: 1 of each type (defensive for this spawn)
+- Level 2: defensive only
+- Level 3: random between aggressive and defensive
+- Level 4: aggressive only
+- Level 5: random between all 4 types
+- Level 6+: random between all 4 types
+
+TIME DILATION SYSTEM
+====================
+
+Superhot-Style Time Control:
+- Time dilation factor: 0.01x to 1.0x
+- 0 movement = 0.01x (nearly frozen)
+- 1000+ movement = 1.0x (normal speed)
+
+Time Dilation Calculation:
+- Player speed: magnitude of velocity
+- Shooting forward movement: 500 units/sec equivalent
+- Total movement = actual + shooting movement
+- Speed ratio = min(total_movement / 1000, 1.0)
+- Target dilation = 0.01 + (1.0 - 0.01) * speed_ratio
+
+Smooth Transitions:
+- Accelerating: dilation_diff * 2.0 * dt
+- Decaying: Uses ship's decay rate for consistency
+- Below 10% speed: decay_rate^4 (much faster decay)
+
+PARTICLE EFFECTS SYSTEM
+=======================
+
+Explosion Types:
+1. Asteroid Explosion: 40% red, 35% orange, 25% yellow particles
+2. UFO Explosion: 90% electric blue, 10% bright white particles
+3. Ship Explosion: Rainbow explosion with 150 particles
+4. Shield Hit: Blue explosion with 25 particles
+
+Particle Properties:
+- Lifetime: 1.0 second default
+- Size: 2.0 pixels default
+- Velocity: Random direction with magnitude based on explosion type
+- Color: Based on explosion type and randomization
+
+Particle Count Calculation:
+- Asteroid: (20 + (2 * size) * 20) * 0.5 (50% fewer particles)
+- UFO: 40 * 1.5 * 1.5 = 90 particles
+- Ship: 150 particles (rainbow explosion)
+
+STAR FIELD SYSTEM
+=================
+
+Star Properties:
+- Count: 200 stars
+- Speed range: 0.5 to 3.0 units
+- Brightness: 0.3 to 1.0
+- Size: 0.5 to 2.0 pixels
+- Explosion speed: 400 to 1000 units/sec
+
+Parallax Movement:
+- Stars move opposite to ship movement
+- Speed factor: min(ship_velocity.magnitude() / 100.0, 10.0)
+- Movement: ship_velocity * star_speed * 0.01 * speed_factor
+
+Trail Effect:
+- Activates at 42% of max speed (4.2 speed factor)
+- Trail length: 0 to 30 pixels (scales with speed)
+- Trail color: Electric blue (Star Wars style)
+- Trail brightness: base_brightness // 3
+
+Explosion Mode:
+- Duration: 2.0 seconds
+- Stars move outward from center
+- Speed increases over time: explosion_speed * (1.0 + timer * 4.0)
+- Brightness: 1.5x normal during explosion
+
+Fade-In Mode:
+- Duration: 1.5 seconds
+- Stars per frame: 8
+- Gradual alpha increase from 0.0 to 1.0
+
+AUDIO SYSTEM
+============
+
+Music Generation:
+- Sample rate: 44100 Hz
+- Dual channel: Left (crystal), Right (ambient)
+- Tempo: 180 BPM
+- Reverb: 0.3 amount, 2205 delay samples
+
+Musical Notes (Hz):
+- C4: 261.63, D4: 293.66, E4: 329.63, F4: 349.23
+- G4: 392.00, A4: 440.00, B4: 493.88, C5: 523.25
+
+Music Styles:
+1. Base Sequence: C4, E4, G4, C5, G4, E4, C4
+2. Crystal Style: Higher frequencies, crystal-like tones
+3. Ambient Style: Lower frequencies, atmospheric tones
+4. Dual Crystal-Ambient: Combined left/right channel sequences
+
+Music Triggers:
+- Title screen: 100% chance on first load
+- Level change: 10% chance
+- Game over: Music stops
+
+VISUAL EFFECTS SYSTEM
+=====================
+
+Screen Shake:
+- Intensity: 1-12 levels
+- Duration: 0.2-0.75 seconds
+- Applied to all drawing coordinates
+- Subject to time dilation
+
+Score Pulse:
+- Opacity: 50% to 100% (fade up then down)
+- Size: 1.0x to 3.0x scaling
+- Duration: 0.1 + (points/100) * 0.1 seconds
+
+Ability Rings:
+- Outer ring: Ability charge indicator
+- Inner ring: Shield status indicator
+- Pulse effects: Based on charge state and shield status
+
+Debug Mode:
+- Hitbox visualization: Red (ship), Green (asteroids), Yellow (UFOs), Blue (bullets)
+- UFO state display: Personality and current state
+- Size information: Asteroid size numbers
+
+MEMORY MANAGEMENT
+=================
+
+Garbage Collection:
+- Periodic cleanup: Every 5 seconds
+- Particle cleanup: Removes expired particles
+- List optimization: Pre-allocated temporary lists for collision detection
+
+Performance Optimizations:
+- Pre-allocated lists: temp_positions_1, temp_positions_2
+- Optimized collision detection: get_wrapped_positions_optimized
+- Efficient particle management: Clear expired particles regularly
+
+INPUT HANDLING
+==============
+
+Controls:
+- Arrow Keys: Rotate & Thrust
+- WASD: W/S Thrust, A/D Strafe
+- Space: Shoot
+- Q/E/B: Abilities (when ready)
+- F1: Debug Mode
+- R: Restart (Game Over)
+- P: Pause
+- ESC: Quit
+
+Input States:
+- keys_pressed: Set of currently pressed keys
+- Continuous input: Handled in update loop
+- Event handling: Key down/up events
+
+GAME STATES
+===========
+
+State Machine:
+- waiting: Title screen, waiting for start
+- playing: Active gameplay
+- paused: Game paused (P key)
+- game_over: Game ended, waiting for restart
+
+State Transitions:
+- waiting → playing: Space key
+- playing → paused: P key
+- paused → playing: P key
+- playing → game_over: Lives = 0
+- game_over → waiting: R key
+
+Game Over Effects:
+- Star explosion: 2.0 second duration
+- Music stops
+- Rainbow ship explosion
+- No screen shake during game over
+
+TECHNICAL IMPLEMENTATION DETAILS
+================================
+
+Resource Management:
+- get_resource_path(): Handles PyInstaller compatibility
+- Image loading: Fallback to geometric shapes if images fail
+- Error handling: Graceful degradation for missing resources
+
+Logging System:
+- File: gamelog.txt
+- Level: DEBUG
+- Format: timestamp - level - message
+- Handlers: File and console output
+
+Window Resizing:
+- Dynamic screen dimensions: current_width, current_height
+- Star field regeneration: On resize
+- Collision detection: Uses current dimensions
+
+Threading:
+- Music playback: Separate thread for audio generation
+- Non-blocking: Main game loop continues during music
+
+Error Handling:
+- Try-catch blocks: Around critical operations
+- Graceful degradation: Fallback behaviors for failures
+- Logging: All errors logged to gamelog.txt
+
+This documentation covers all major game mechanics, calculations, and technical details present in the Chucksteroids v2 codebase. The game features a sophisticated blend of classic Asteroids gameplay with modern enhancements including time dilation, advanced AI, particle effects, and procedural audio generation.

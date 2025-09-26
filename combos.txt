@@ -1,0 +1,126 @@
+COMBO & SCORING SYSTEM IMPLEMENTATION QUESTIONS
+================================================
+
+Based on the requirements in fixes.txt:
+- Add combo system, the score bright white duration multiples the score 1x at 0 seconds - 3x at 3 seconds
+- Also increase score multiplier by .01x per asteroid broken in that level resetting on new game new level or death
+- show score multiplier after the score in white to green, white 0% and full green 5x
+
+CURRENT GAME ANALYSIS:
+=====================
+- Current scoring system exists with add_score() method
+- Score pulse effect already implemented (bright white duration)
+- Asteroids destroyed via: player shots, shield collisions, ability blasts, UFO collisions
+- Level progression when len(self.asteroids) == 0
+- Score milestones: 100k (shields), 250k (shields+abilities), 500k (extra life)
+
+IMPLEMENTATION QUESTIONS:
+========================
+
+1. COMBO TIMER DURATION & BEHAVIOR:
+   - Should combo multiplier be linear progression (1x → 2x → 3x over 3 seconds)?
+   - Does it cap at 3x after 3 seconds, or continue increasing?
+   - What happens at 4+ seconds - reset to 1x or stay at 3x?
+   - Should the timer reset immediately when an asteroid is destroyed?
+
+2. SCORE MULTIPLIER INTEGRATION:
+   - Combo multiplier: 1x-3x based on time since last destruction
+   - Level multiplier: +0.01x per asteroid destroyed in current level
+   - Should these multiply together? (combo × level = final multiplier)
+   - Or should they be additive? (combo + level = final multiplier)
+   - Example: combo=2x, level=1.5x → final=3x (multiply) or 3.5x (add)?
+
+3. VISUAL DISPLAY SPECIFICATIONS:
+   - Which multiplier should show the "white to green" display?
+     * Combo multiplier (1x-3x range)?
+     * Level multiplier (0x-5x range)?
+     * Combined final multiplier?
+   - Where should it appear on screen?
+     * Next to the score?
+     * Below the score?
+     * Separate HUD element?
+   - Color gradient: white (0%) to green (5x) - what does 0% represent?
+     * 0% = 1x multiplier (no bonus)?
+     * 0% = 0x multiplier (no bonus)?
+
+4. RESET CONDITIONS:
+   - Combo timer should reset on: new game, new level, death?
+   - Level multiplier should reset on: new game, new level, death?
+   - Or should level multiplier persist across levels but reset on death/new game?
+   - Should both systems reset on the same conditions?
+
+5. ASTEROID DESTRUCTION TRIGGERS:
+   - Should combo system trigger on ALL asteroid destructions?
+   - Or only specific types:
+     * Player shots only?
+     * Direct player actions (shots, shields, abilities)?
+     * Exclude UFO vs asteroid collisions?
+   - Current destruction methods in game:
+     * Player shot hits asteroid
+     * Player shield collides with asteroid
+     * Player ability blast hits asteroid
+     * UFO collides with asteroid
+
+6. MAXIMUM MULTIPLIER CAPS:
+   - "Full green 5x" refers to:
+     * Combo system maximum (3x)?
+     * Level multiplier maximum (5x)?
+     * Combined system maximum?
+   - Should there be caps on either system?
+   - Level multiplier: +0.01x per asteroid - what's the maximum per level?
+
+7. TECHNICAL IMPLEMENTATION DETAILS:
+   - Should combo timer be independent of game time dilation?
+   - Should level multiplier persist during ability breaking sequences?
+   - How should the system handle the existing score pulse effect?
+   - Should combo multiplier affect the score pulse duration/intensity?
+
+8. UI/UX CONSIDERATIONS:
+   - Should there be visual feedback when combo multiplier changes?
+   - Should there be sound effects for different multiplier levels?
+   - Should the multiplier display pulse or animate?
+   - Should there be a combo counter (e.g., "x5 COMBO")?
+
+9. INTEGRATION WITH EXISTING SYSTEMS:
+   - How should this interact with existing score milestones (100k, 250k, 500k)?
+   - Should combo/level multipliers affect milestone calculations?
+   - Should the system work with the existing score pulse effect?
+
+10. EDGE CASES:
+    - What happens if player destroys multiple asteroids simultaneously?
+    - Should rapid successive destructions extend the combo timer?
+    - How should the system handle asteroid splitting (creates multiple asteroids)?
+    - Should destroyed asteroids from splitting count toward level multiplier?
+
+IMPLEMENTATION PLAN:
+===================
+Once questions are answered, the implementation will involve:
+
+1. Add combo system variables to Game class:
+   - combo_timer: tracks time since last asteroid destruction
+   - combo_multiplier: current combo multiplier (1x-3x)
+   - level_multiplier: current level multiplier (starts at 1.0x)
+   - asteroids_destroyed_this_level: counter for level multiplier
+
+2. Modify add_score() method to apply multipliers
+
+3. Add combo timer update logic in main game loop
+
+4. Add visual display for multiplier(s)
+
+5. Add reset logic for new game/level/death
+
+6. Integrate with existing asteroid destruction detection
+
+7. Test with all asteroid destruction methods
+
+CURRENT CODE LOCATIONS TO MODIFY:
+=================================
+- Game.__init__(): Add combo system variables
+- Game.add_score(): Apply multiplier logic
+- Game.update(): Update combo timer
+- Game.draw_score_with_pulse(): Add multiplier display
+- Asteroid destruction handlers: Trigger combo system
+- Game.start_new_game(): Reset combo system
+- Game.start_new_level(): Reset combo system (if needed)
+- Game.handle_ship_death(): Reset combo system (if needed)

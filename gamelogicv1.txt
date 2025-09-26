@@ -1,0 +1,289 @@
+# Chucksteroids Game Logic Documentation
+
+## Overview
+Chucksteroids is a Star Wars-themed Asteroids game built with Pygame. The game features a ship (X-Wing) that must destroy asteroids and UFOs (TIE fighters) while avoiding collisions. The game includes advanced features like shields, particle effects, star field backgrounds, screen shake effects, and achievement systems.
+
+## Core Game Architecture
+
+### 1. Vector2D Class (Lines 27-56)
+- **Purpose**: 2D vector mathematics for position and velocity calculations
+- **Key Methods**:
+  - `__add__`, `__sub__`, `__mul__`: Vector arithmetic operations
+  - `magnitude()`: Calculate vector length
+  - `normalize()`: Convert to unit vector
+  - `rotate(angle)`: Rotate vector by given angle in radians
+
+### 2. GameObject Base Class (Lines 58-82)
+- **Purpose**: Base class for all game entities
+- **Properties**:
+  - `position`: Vector2D for x,y coordinates
+  - `velocity`: Vector2D for movement speed
+  - `angle`: Rotation angle in radians
+  - `active`: Boolean for object lifecycle
+- **Key Features**:
+  - Screen wrapping (Classic Asteroids Deluxe style)
+  - Time-based movement updates
+  - Dynamic screen size support
+
+## Game Entities
+
+### 3. Ship Class (Lines 84-297)
+**Core Properties**:
+- `radius`: 15 pixels (50% larger than original)
+- `thrust_power`: 140.625 (25% increase)
+- `max_speed`: 1 billion (10x increase for extreme speeds)
+- `rotation_speed`: 5 radians/second
+
+**Shield System**:
+- 3 shield hits maximum
+- 3-second recharge time per hit
+- Visual feedback with pulsing effects
+- Shield absorbs collisions instead of destroying ship
+
+**Movement Mechanics**:
+- Forward thrust (UP arrow)
+- Reverse thrust (DOWN arrow)
+- Left/Right rotation
+- Speed decay when not thrusting (45% per second)
+- Velocity inheritance for bullets
+
+**Special Features**:
+- "Spinning Trick" achievement (11.38 rotations)
+- Invulnerability period after respawn (3 seconds)
+- Visual thrust flame effect
+- X-Wing image with rotation
+
+### 4. Bullet Class (Lines 299-342)
+**Properties**:
+- `radius`: 4 pixels (increased for better hit detection)
+- `lifetime`: 4 seconds (100% longer than original)
+- `is_ufo_bullet`: Differentiates player vs enemy bullets
+
+**Features**:
+- Velocity-based rotation for visual alignment
+- Different images for player vs UFO bullets
+- Screen wrapping
+- Automatic cleanup after lifetime expires
+
+### 5. Asteroid Class (Lines 345-505)
+**Size System** (9 sizes total):
+- XXXL (9), XXL (8), XL (7), L (6), M (5), S (4), XS (3), XXS (2), XXXS (1)
+- Each size has different radius, rotation speed, and movement speed
+- Larger asteroids move slower and rotate slower
+
+**Splitting Behavior**:
+- Normal splitting: 2 smaller asteroids per hit
+- XXS special behavior: 25% chance to split into 2 XXXS, 75% chance to be destroyed
+- Inherits parent velocity with random offset
+- Projectile velocity influence (5% of bullet speed)
+
+**Visual Features**:
+- Irregular polygon shapes (fallback)
+- Asteroid image with rotation
+- Size-based scaling
+- Speed-based rotation multiplier
+
+### 6. UFO Class (Lines 507-558)
+**Properties**:
+- `radius`: 15 pixels
+- `speed`: 100 pixels/second
+- `shoot_interval`: 1 second (2x faster than original)
+
+**Behavior**:
+- Horizontal movement with vertical oscillation
+- Shoots at player ship
+- Spawns from screen edges or corners
+- TIE fighter image
+
+### 7. Particle System (Lines 561-658)
+**Particle Class**:
+- Position, velocity, color, lifetime, size
+- Fade-out over time
+- Alpha-based transparency
+
+**ExplosionSystem Class**:
+- Multiple explosion types:
+  - Standard explosion (asteroid destruction)
+  - Rainbow explosion (player death)
+- Color-coded particles:
+  - Asteroid: 50% dark grey, 30% white, 20% firey orange
+  - UFO: 75% electric blue, 20% firey red, 5% white
+  - Player death: Rainbow cycling colors
+
+### 8. StarField Class (Lines 660-722)
+**Features**:
+- 200 stars with random positions, speeds, brightness
+- Speed-based star movement (opposite to ship movement)
+- Hyperspace trail effect at high speeds (42% of max speed)
+- Electric blue trail color (Star Wars style)
+- Dynamic regeneration on screen resize
+
+## Game Logic
+
+### 9. Game Class (Lines 757-1363)
+**Game States**:
+- `waiting`: Title screen
+- `playing`: Active gameplay
+- `paused`: Game paused
+- `game_over`: Game ended
+
+**Core Game Loop**:
+1. Handle input events
+2. Update game objects
+3. Check collisions
+4. Draw everything with screen shake
+5. Repeat at 60 FPS
+
+**Screen Shake Integration**:
+- Temporary surface creation during shake
+- Random offset application
+- Smooth intensity decay
+- Applied to all visual elements
+
+### 10. Input Handling (Lines 877-901)
+**Controls**:
+- Arrow Keys: Movement and rotation
+- Space: Continuous shooting
+- P: Pause/Resume
+- R: Restart (any time)
+- ESC: Quit
+
+**Special Features**:
+- Continuous shooting with timer-based rate limiting
+- Spinning detection for achievement
+- Thrust state tracking
+
+### 11. Collision Detection (Lines 931-1105)
+**Collision Types**:
+- Bullet vs Asteroid
+- Bullet vs UFO
+- Ship vs Asteroid
+- Ship vs UFO
+- Ship vs UFO Bullets
+
+**Collision Logic**:
+- Distance-based circular collision detection
+- Shield system overrides destruction
+- Score awarding based on object size
+- Explosion particle generation
+- Asteroid splitting with projectile influence
+- Screen shake triggers for impactful events
+
+**Screen Shake Triggers**:
+- Size 9 asteroid destruction: Medium shake (8 intensity, 0.5s)
+- Player death: Strong shake (15 intensity, 0.8s)
+- Shield absorption: No shake (visual feedback only)
+
+### 12. Scoring System
+**Points**:
+- Asteroid: size × 100 points
+- UFO: 200 points
+- Shield destruction: size × 50 points (asteroid), 100 points (UFO)
+
+### 13. Level Progression
+**Asteroid Spawning**:
+- Level × ((1 random large) + 1 M asteroid)
+- Large sizes: XXXL, XXL, or XL
+- Spawned on screen edges
+
+**UFO Spawning**:
+- 5-second initial delay
+- 1-3 UFOs per level (random)
+- 1-second delay between individual spawns
+- Spawn from random corners
+
+### 14. Visual Effects
+**Ship Effects**:
+- Thrust flame animation
+- Invulnerability flashing
+- Shield visual feedback with pulsing
+- X-Wing image with proper rotation
+
+**Background Effects**:
+- Dynamic star field
+- Hyperspace trails at high speed
+- Particle explosions
+- Screen wrapping for all objects
+
+**Screen Shake Effects**:
+- Dynamic intensity based on impact
+- Temporary surface rendering
+- Random offset application
+- Smooth decay over time
+
+**UI Elements**:
+- Score, lives, level display
+- Shield status with recharge progress
+- Achievement messages
+- Game state overlays
+
+### 15. Screen Shake System (Lines 803-816)
+**Purpose**: Visual feedback for impactful events
+**Properties**:
+- `screen_shake_intensity`: Current shake strength
+- `screen_shake_duration`: How long shake lasts
+- `screen_shake_timer`: Countdown timer
+
+**Trigger Events**:
+- Size 9 asteroid destruction: 8 intensity, 0.5 seconds
+- Player death: 15 intensity, 0.8 seconds
+
+**Implementation**:
+- Creates temporary surface for shake effect
+- Applies random offset to final blit
+- Smooth intensity decay over time
+
+### 16. Performance Optimizations
+**Object Management**:
+- Active/inactive object system
+- Automatic cleanup of expired objects
+- Limited bullet count (40 max)
+- Efficient collision detection
+
+**Rendering**:
+- Image-based sprites with fallback shapes
+- Optimized particle system
+- Dynamic screen resizing support
+- Screen shake with temporary surface
+
+## Technical Features
+
+### 17. Window Management
+- Resizable window (400×300 minimum)
+- Dynamic star field regeneration
+- Proper aspect ratio handling
+- Screen shake compatibility
+
+### 18. Achievement System
+- "Spinning Trick" achievement (11.38 rotations)
+- 10-second display duration
+- One-time achievement tracking
+
+### 19. Game Balance
+**Difficulty Scaling**:
+- More asteroids per level
+- More UFOs per level
+- Shield system for survivability
+- Speed decay for control
+
+**Visual Polish**:
+- Star Wars theming
+- Particle effects
+- Smooth animations
+- Professional UI
+- Screen shake feedback
+
+### 20. Enhanced Visual Effects
+**Screen Shake**:
+- Dynamic intensity based on impact
+- Smooth decay over time
+- Applied to all visual elements
+- Temporary surface rendering
+
+**Particle Systems**:
+- Size-based particle scaling
+- Color-coded explosion types
+- Lifetime-based fade effects
+- Performance-optimized cleanup
+
+This game represents a modern take on the classic Asteroids formula with enhanced graphics, improved gameplay mechanics, Star Wars theming, and advanced visual effects while maintaining the core arcade experience.

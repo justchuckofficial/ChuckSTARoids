@@ -1,0 +1,285 @@
+ABILITY SYSTEM
+x ability charge looks the same as the shield recharge. purple for 1, pink for 2 
+x Ability flases independently from time
+x when ability is fully charged glow 100% for 1 game second before pulse starts
+x increase pulse opacty 50%-100%
+x Make charged ability flash 2x faster
+
+TITLE:
+x skew title
+x on main game title screen, use a bright yellow outline for the game title.
+x make game title fill a gradient yellow at the bottom fading up to black at the top 
+x when game title is displayed, scale game title text from 0 to 100% over 3 seconds 
+x make title go to 150% then down to 100%
+PRESS SPACE TO START:
+x fade in "press space to start" over 2 seconds on game title
+x delay press space to start by 2 seconds, change fade to 4 seconds
+x make press space to start pulse 25%-100% opacity in 4 second intervals after fade completes starting with 100% opacity
+x when the press start begins to pulse after the fade, use the current opactiy post-fade to smoothly transition into the pulsing
+TITLE STARS:
+x on game title start screen, Show starfield in background.
+x if player presses movement keys, move the starfield in the background properly
+xxx on the game screen, change ufo spawn: 30 ufos, 1 second intervals, from a randomly selected corner each time, 25% chance each time to spawn 4 swarmers (1 from each corner) instead of 1. ufo type cycles through all other types (not swarmers) progressively for each spawn.  
+xxx make the game title ufos chase a spot that slowly moves in a figure 8 across the whole screen no matter the size of the screen. 
+xxx change game title screen figure 8 to a centered circle 150px in diameter
+xxx make the player a size 2, render at 50% opacity. if the player isnt moving hide the asteroid. 
+xxx if the asteroid is moving make the ufos chase the asteroid. otherwise go back to the figure 8 
+TITLE UFOS:
+x title screen ufos should move continuously, wrapping from left to right, continuing the pattern. 
+x ufos randomly rotate between -10 and +10 degrees at random speeds
+x vary each ufo amplitude 20px to 40px.
+x lock all waves to frequency 1
+x stagger phase offsets
+x lock all vertical centers to exactly inbetween the game title and press space to start 
+x vary each ufo movement speed 80-120.
+x 2 second intervals
+x make game title screen player asteroid able to collide with the ufos. if a ufo is destroyed, spawn another one in 2 seconds.
+x on the game screen, after i press space, be sure to despawn any game title screen ufos etc. properly reset before drawing level 1. 
+x If player presses ability button on the start screen, generate the 200 ability particles centered from game title
+x When starting a new game by pressing space from the main title screen, make sure player can't fire for 0.5 seconds to ensure player doesn't start the game already firing a shot
+
+GAME OVER:
+x on game over screens, fade in the game over text over 2 seconds 
+x after dying from taking damage, first show the in-game game over screen. if the player hits any key take them to the title screeen. 
+x make sure when loading the title screen that we do a full refresh/despawn/reset of the game world 
+x on the game over screen, 25% from the top in 32pt bold red, print the players score and "LEVEL #"
+x move the game over text to centered three lines under the score move the press r to restart text three lines under game over 
+x change game over text to "G A M E  O V E R"
+x when player dies in any way, let game world play for 2 un game time affected seconds before showing the game over screen
+
+DEBUG MODE
+x show player speed and world speed in debug view, centered at the bottom in white
+x in debug view, enable "g" to have player take no damage 
+x change god mode message to display like the others, only when activated. if god mode is activated put a zap emoji on the left and right of the player ship display
+x enable in debug mode: pressing 1 will give player 100,000 points with the appropriate game effects
+x  pressing 2 will give player 250,000 points with the appropriate game effects   
+x  pressing 3 will give player 500,000 points with the appropriate game effects 
+x  enable .3 second cool downs on 1 2 3 keypresses 
+
+GAME MECHANICS & BALANCING
+x change player Invulnerability color from blue to bright cyan 
+x fix asteroid hitboxes 
+x make it so that when player takes damage or otherwise loses a shield, that the charging shield isnt interrupted 
+x the first shot adds 200 units
+x the 2nd shot adds 300 units
+x the 3rd shot adds 400 units
+x the 4th shot adds 500 units
+x every shot adds 500 units
+x change rate of fire curve to 1 second from 2 
+x make Player world / speed decay faster below 5% 4x
+x each degree that the ship turns should add .01 speed unit 
+x when player speed is 1000+ speed units make time 1x
+x when player speed is 2000+ speed units make time 5x
+x 3000 | 2.5x  4000 | 0.75x   5000 | 0.5x  6000 | 0.4x   7000 | 0.3x   8000 | 0.2x   9000 | 0.1x  10000+ | 0.01x (capped) 
+x for each 250,000 points scored by the player, recharge all player shields to maximum with the appropriate animation
+x for each 500,000 points scored by the player, recharge all player shields and both ability rings with the appropriate animations
+x for each 1,000,000 points scored by the player, give the player +1 maximum lives and add a player ship centered below the player lives display
+x add an modifier to each ufo, .8x-1.1x
+x at level 1, give all ufos at .5x accuracy penalty
+x at level 1, give all ufos at .3x accuracy penalty
+x at level 1, give all ufos at .2x accuracy penalty
+x at level 1, give all ufos at .1x accuracy penalty
+x at level 5, give all ufos no accuracy penalty
+x ufos avoid asteroids more 
+x all UFO shots have a 33% chance to hit asteroid 
+x  add ability to brake left or right ctrl 
+x Every asteroid broken on a level increases base player shot intervals by 0.0001 resets on new level new game or death
+if an asteroid has just spawned sucessfully from a split in the last 1 game time effected seconds, allow that asteroid to collide with other asteroids less than half their size, both asteroids register a hit as normal  
+
+
+STAR DESTROYERS 
+x Add star destroyers every 3 levels- slow moving bullet hell
+x Star destroyer destroys asteroids size 4 and up
+x star destroyer shots are 2x size 
+x star destroyer is 500px 
+x boss can collide with asteroids, ufo shots, player shots and the player. 
+x raycast out from the boss and order all asteroids by closest distance to boss, 
+x randomly assigning if conflicts, and then progressively shoot 1 shot at each asteroid from closest to farthest.
+x after firing 1 shot at each one, reorder all objects by closest to player and shoot again.
+x shots go off in 24 spots, in 4 second cycle 
+ level 3 =  1 boss, random side of the screen.
+ level 6 = 2 bosses spawn at the same time on opposite sides of the screen, one on top one on bottom
+ level 9 = (50% chance to spawn 3, 50% chance to spawn 1) bosses, random sides of the screen 
+ level 12+ = (33% chance to spawn (current level/4 rounded down), 33% chance to spawn 4 (1 in from top right, 1 in from top left, 1 in from bottom right, 1 in from bottom left), 34% chance to spawn 2) bosses, random sides of the screen  
+
+COMBO & SCORING SYSTEM
+x Base: 1.0x (minimum, never goes below 1x)
+x Asteroid Bonus: +0.01x per asteroid destroyed by player
+x UFO Bonus: +0.1x per UFO killed by player
+x Add combo system, the score bright white duration multiples the score 1x at 0 seconds - 3x at 3 seconds
+x Also increase score multiplier by .01x per asteroid broken in that level resetting on new game new level or death
+x show score mukltiplier after the score in white to green, white 0% and full green 5x 
+x score multiplier reduces shield recharge times 
+x resets on ability use, death, new level, new game 
+x ui message for 250k 500k 1000k 
+Updated Scoring System
+The asteroid destruction scoring has been changed to:
+Normal shooting: asteroid.size * 11 points ✅
+Shield destruction: asteroid.size * 11 points ✅
+Collision destruction: asteroid.size * 11 points ✅
+Ability destruction: asteroid.size * 1 point ✅
+
+
+UFO Spinout
+x When ufo dies chance to burst into flames and spin off in random direction and destroy rocks/ufos 
+x UFO Death by Player Shot: 10% chance
+x UFO vs Asteroid Collision: 5% chance
+x UFO vs UFO Collision: 50% chance (increased from 5%)
+x ALL UFOs on Level 1: 100% chance (changed from just first 3)
+x spinout.gif appears behind UFO, scales from 0% to 100% over 1 second
+x 20-42 sparks per second (66% firey colors, 34% electric colors)
+x Speed boost: 100-200 speed units added to current velocity
+x 50% chance: UFO goes straight in random direction at 3-5x speed
+x 50% chance: UFO spirals outward in logarithmic pattern
+x Instant Damage: UFO damages asteroids, other UFOs, and player immediately
+x Delayed Explosion: UFO explodes after random 0.5-1.5 seconds on contact
+x UFO rotates faster and faster (1x to random 1x-10x speed)
+x ufo quickly accelerates in a random direction or spirals outward, up to full speed and 10x rotation
+
+## VISUAL EFFECTS & ANIMATIONS
+x Use trails with star explosions
+x spasrks on ufo shot hit
+x asteroids Particles spawn within diameter radius
+x Radius: asteroid_size * 8 (diameter increases with size)
+x increase asteroid Shield Impact Explosions Particle Count:
+x Formula: 20 + asteroid.size * 20
+x change asteroid Bullet Impact Explosions and Ability Blast Explosions Color Distribution:
+x  40%: (x, x, x) where x is 75-125
+x  20%: (34, 9, 1) with ±2 variation
+x  15%: (98, 23, 8) with ±4 variation
+x  10%: (148, 27, 12) with ±5 variation
+x   8%: (188, 57, 8) with ±10 variation
+x   7%: (246, 170, 28) with ±15 variation
+x when player speed is 0 the left side progress bar width is 1x
+x when player speed is 1000 the left side progress bar width is 1x
+x when player speed is 2000 the left side progress bar width is 1.5x
+x when player speed is 10000 the left side progress bar width is 3x
+x when a player shot hits anything, spawn 4 (255,75,62 with +/-5 variations), 3 (255, 229, 72 with +/-10 variations) and 3 (x,x,x with x= 200-255) paricles, .5 second life, 60-80 units/second speed
+x electric blue and white electrical spark colors, make them appear only when player speed is more than 1000, generate 1 at 1000, 5 at 2000, 7 at 3000 and 12 at 4000
+x when ability is 2x charged, player generates 12 randomly pink/purple, 3 game second lifetime, small, low velocity particles one at a time in a circle 15 px around the player. the particles generat clockwise aound the player 1 rotation per 3 in game time affected game seconds
+x when ufos collide with asteroids more grey
+x starfield 300 stars .2-1.2 brightness 
+x Red flash when hit / screen flash 
+x Make new level animation text go from below to 25% from top of screen
+x Use tweening to smooth ufo movement?
+x change ship graphics
+x  tie aggressive 
+x  b defensive 
+x  i deadly 
+x  a tactical 
+x  fo swarm 
+x Fighters come in waves?
+x on the asteroid layer, for the asteroids in @chuckstaroidsv2.py, draw size 1 on top of size 2 on top of size 3  on top of size 4 on top of size 5 on top of size 6 on top of size 7 on top of size 8 on top of size 9
+x Motion lines for ties like thrust 
+x Fix ui messages
+x debug spinning message 
+x Add shadow casting under  asteroids and ships 
+x Should we limit object counts when performance drops?
+x if game fps is less than 30fps, cap asteroids at 200
+x ap particles at 1000
+
+last sesh 
+x make sure player lives aded only on minlestone 
+x star destroyer tagert player more
+x add tie spinout delay 
+x before new level loads, print date time 'Level # Complete: (asteroids destroyed) (ufos destroyed) (current score)x(current multipllier)
+x when new level loads remove last level game log, keeping hi scores and level complete line 
+x remove fps turn rate thing 
+x have rof sweet spot change with multiplier?
+spinout scan hit bosses 
+2x particle limit
+invulnerability (no visual) when last asteroid killed
+star explosion when last asteroid killed 
+fix player lives
+ufo points/log
+remove debugging logging 
+new MESSAGES
+ - Number of UFOs spawned on that level
+6 >10 "All ships, fire at will!" 3
+15 >20 "Launch fighters!" 
+9 >30 "Stay on target… stay on target…" 
+12 >60 "This is where the fun begins." 
+21 >90 "We've got incoming!" 
+ - More than 30 of a certain type of ufo spawned 
+   "There's too many of them!" 
+  - Multiplier, when crossing 
+ 3x "We've got them on the run!" 
+ 4x "The Force will be with you, always.
+ 5x  "Great, kid, don't get cocky."
+
+
+
+
+
+
+
+
+star destroyer off screen weapon  bug after they pass 
+
+
+. . . . . . . . . . . . . .
+
+## UI & MESSAGES
+  - Killing x UFOs 
+  10
+  20
+  30
+  60
+  - Killing x asteroids 
+128
+256
+
+instance size 321 created by ability?
+
+
+after player clears the last asteroid, or dies, a 1 second raw frame time wipe goes from a random size of the screen to the opposite, like star wars scene transitions 
+
+make controls page
+
+
+---------------------------
+flickering on elecric particles?
+
+
+Rebel cruiser blockade runner spawns 10-30 seconds after star destroyer
+
+  Commentary image/commander pop up
+
+
+Power up / Ywing / AWing - holographic icon like dvd menu collides with asteroids, ufos, player shots, ufo shots 
+Magnetic to player 
+# POWER UPS
+  - Tri shot
+  - Homing shots
+  - 2x speed
+  - 5x speed
+  - Invulnerability
+  - Rotating blocker shield
+  - Double shields
+  -replusor
+  -summon blockade runner
+
+## SPECIAL ENEMIES & LEVELS
+Cellular automata enemy 
+Black hole enemy 
+
+## SOUND EFFECTS
+- Add bloop sound for 1000, 5000, 10000, 50000, 100000, 500000, 1000000 points 
+- Add death sound durdurdurrr
+- Add game over music do do dooooooo....
+- Add level clear sound schwoooOOOpP!
+- Add sound for ability charge spool up 
+- Add sound for ability x2 bass drop
+- Add sound for ufo death
+- Add sound for ufo spawn
+- Make star explosion noise
+
+
+## LEVEL PROGRESSION
+- Level 8-565,000
+- Level 9 - 675,000
+- Level 10-
+- Level 11 - 997,000
+- Level 12- 113,500
+- 13 - 1,300,000
+- 1,550,000 level 13

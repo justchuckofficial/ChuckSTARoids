@@ -1,0 +1,71 @@
+name: Build Windows Version
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pygame numpy pyinstaller requests psutil mido
+        
+    - name: Verify game assets
+      run: |
+        echo "Checking for required game assets..."
+        if (Test-Path "chuckstaroidsv5.py") { echo "✅ Main game file found" } else { echo "❌ chuckstaroidsv5.py missing"; exit 1 }
+        if (Test-Path "music.py") { echo "✅ Music module found" } else { echo "❌ music.py missing"; exit 1 }
+        if (Test-Path "xwing.ico") { echo "✅ Icon file found" } else { echo "❌ xwing.ico missing"; exit 1 }
+        
+        # Check for image assets
+        $images = @("xwing.gif", "fire.gif", "starshot.gif", "tieshot.gif", "shot.gif", "roid.gif", "tie.gif", "tieb.gif", "tiei.gif", "tiea.gif", "tiefo.gif", "spinout.gif", "smoke.gif", "stard.gif", "rebel.gif", "controls.gif")
+        foreach ($img in $images) {
+          if (Test-Path $img) { echo "✅ $img found" } else { echo "⚠️ $img missing" }
+        }
+        
+    - name: Build Windows executable
+      run: |
+        echo "Building Windows executable..."
+        python -m PyInstaller chuckstaroidsv5.spec
+        
+    - name: Test the executable
+      run: |
+        if (Test-Path "dist\ChuckSTARoids_v5.exe") {
+          echo "✅ Windows executable created successfully!"
+          echo "File size: $((Get-Item 'dist\ChuckSTARoids_v5.exe').Length) bytes"
+          echo "Location: dist\ChuckSTARoids_v5.exe"
+        } else {
+          echo "❌ Executable creation failed"
+          Get-ChildItem dist\ -Recurse
+          exit 1
+        }
+        
+    - name: Upload Windows executable
+      uses: actions/upload-artifact@v3
+      with:
+        name: ChuckSTARoids-Windows
+        path: dist/ChuckSTARoids_v5.exe
+        retention-days: 30
+        
+    - name: Create release (if tagged)
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: softprops/action-gh-release@v1
+      with:
+        files: dist/ChuckSTARoids_v5.exe
+        draft: false
+        prerelease: false

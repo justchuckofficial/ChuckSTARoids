@@ -1,0 +1,73 @@
+=== CHUCKSTEROIDS HIGH SCORES ===
+ 1. 401,548 - Level 28 - 09/14/2025 02:37
+ 2. 293,676 - Level 2 - 09/14/2025 17:51
+ 3. 291,061 - Level 3 - 09/14/2025 13:17
+ 4. 160,636 - Level 12 - 09/16/2025 00:26
+ 5. 136,242 - Level 8 - 09/14/2025 17:38
+ 6. 132,730 - Level 5 - 09/14/2025 20:20
+ 7. 123,201 - Level 15 - 09/14/2025 17:43
+ 8. 107,360 - Level 13 - 09/14/2025 17:19
+ 9. 71,342 - Level 5 - 09/14/2025 16:34
+10. 65,315 - Level 7 - 09/14/2025 17:33
+==============================
+
+============================================================
+NEW GAME SESSION STARTED: 2025-09-16 03:46:45
+============================================================
+[2025-09-16 03:46:45.116] GAME STARTED
+[2025-09-16 03:46:45.162] UFO SPAWNED: defensive on level 1
+[2025-09-16 03:46:46.935] SCORE: +77 points (asteroid shot) - Total: 77 x1.01
+[2025-09-16 03:46:46.942] SCORE: +91 points (asteroid shot) - Total: 168 x1.19
+[2025-09-16 03:46:47.034] SCORE: +93 points (asteroid shot) - Total: 261 x1.21
+[2025-09-16 03:46:47.040] SCORE: +94 points (asteroid shot) - Total: 355 x1.22
+[2025-09-16 03:46:47.127] SCORE: +81 points (asteroid shot) - Total: 436 x1.23
+[2025-09-16 03:46:47.135] SCORE: +81 points (asteroid shot) - Total: 517 x1.23
+[2025-09-16 03:46:47.214] SCORE: +82 points (asteroid shot) - Total: 599 x1.24
+[2025-09-16 03:46:47.846] SCORE: +82 points (asteroid shot) - Total: 681 x1.25
+[2025-09-16 03:46:49.183] SCORE: +83 points (asteroid shot) - Total: 764 x1.26
+[2025-09-16 03:46:49.365] SCORE: +84 points (asteroid shot) - Total: 848 x1.27
+[2025-09-16 03:46:49.454] SCORE: +84 points (asteroid shot) - Total: 932 x1.29
+[2025-09-16 03:46:50.003] SCORE: +85 points (asteroid shot) - Total: 1017 x1.30
+[2025-09-16 03:46:50.391] SCORE: +86 points (asteroid shot) - Total: 1103 x1.31
+[2025-09-16 03:46:50.776] SCORE: +72 points (asteroid shot) - Total: 1175 x1.32
+[2025-09-16 03:46:50.882] SCORE: +72 points (asteroid shot) - Total: 1247 x1.31
+[2025-09-16 03:46:50.937] SCORE: +58 points (asteroid shot) - Total: 1305 x1.32
+[2025-09-16 03:46:50.943] SCORE: +72 points (asteroid shot) - Total: 1377 x1.32
+[2025-09-16 03:46:50.948] SCORE: +73 points (asteroid shot) - Total: 1450 x1.34
+[2025-09-16 03:46:51.001] SCORE: +74 points (asteroid shot) - Total: 1524 x1.36
+[2025-09-16 03:46:51.030] PLAYER HIT: Asteroid collision - Shield hit, 2 shields remaining
+[2025-09-16 03:46:51.031] SCORE: +60 points (asteroid shield) - Total: 1584 x1.37
+[2025-09-16 03:46:51.056] SCORE: +75 points (asteroid shot) - Total: 1659 x1.36
+[2025-09-16 03:46:51.086] PLAYER HIT: Asteroid collision - Shield hit, 1 shields remaining
+[2025-09-16 03:46:51.087] SCORE: +45 points (asteroid shield) - Total: 1704 x1.39
+[2025-09-16 03:46:51.111] SCORE: +75 points (asteroid shot) - Total: 1779 x1.37
+[2025-09-16 03:46:51.117] PLAYER HIT: Asteroid collision - Ship destroyed, 3 lives remaining
+[2025-09-16 03:46:51.117] SCORE: +46 points (asteroid shield) - Total: 1825 x1.41
+[2025-09-16 03:46:51.142] PLAYER HIT: Asteroid collision - Ship destroyed, 3 lives remaining
+[2025-09-16 03:46:51.163] SCORE: +63 points (asteroid shot) - Total: 1888 x1.15
+[2025-09-16 03:46:51.232] SCORE: +64 points (asteroid shot) - Total: 1952 x1.18
+[2025-09-16 03:46:53.256] SCORE: +52 points (asteroid shot) - Total: 2004 x1.19
+[2025-09-16 03:46:53.422] SCORE: +65 points (asteroid shot) - Total: 2069 x1.19
+[2025-09-16 03:46:53.555] SCORE: +39 points (asteroid shot) - Total: 2108 x1.21
+[2025-09-16 03:46:53.588] SCORE: +52 points (asteroid shot) - Total: 2160 x1.20
+[2025-09-16 03:46:53.655] SCORE: +66 points (asteroid shot) - Total: 2226 x1.22
+[2025-09-16 03:46:53.861] SCORE: +40 points (asteroid shot) - Total: 2266 x1.24
+[2025-09-16 03:46:54.360] SCORE: +40 points (asteroid shot) - Total: 2306 x1.23
+[2025-09-16 03:46:55.403] SCORE: +54 points (asteroid shot) - Total: 2360 x1.24
+[2025-09-16 03:46:55.711] GAME OVER: Final Score: 2360, Final Level: 1
+[2025-09-16 03:46:55.711] FINAL SCORE: 2360 - Level 1
+
+============================================================
+NEW GAME SESSION STARTED: 2025-09-16 03:50:09
+============================================================
+
+============================================================
+NEW GAME SESSION STARTED: 2025-09-16 04:05:03
+============================================================
+[2025-09-16 04:05:14.271] UFO SPAWNED: aggressive on level 1
+[2025-09-16 04:05:22.747] UFO SPAWNED: aggressive on level 1
+[2025-09-16 04:05:24.756] UFO SPAWNED: aggressive on level 1
+[2025-09-16 04:05:26.782] UFO SPAWNED: aggressive on level 1
+[2025-09-16 04:05:28.800] UFO SPAWNED: aggressive on level 1
+[2025-09-16 04:05:30.808] UFO SPAWNED: aggressive on level 1
+[2025-09-16 04:05:32.809] UFO SPAWNED: aggressive on level 1

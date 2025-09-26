@@ -1,0 +1,86 @@
+name: Build macOS Version
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  build-mac:
+    runs-on: macos-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pygame numpy pyinstaller requests psutil mido pillow
+        
+    - name: Verify game assets
+      run: |
+        echo "Checking for required game assets..."
+        if [ -f "chuckstaroidsv5.py" ]; then echo "✅ Main game file found"; else echo "❌ chuckstaroidsv5.py missing"; exit 1; fi
+        if [ -f "music.py" ]; then echo "✅ Music module found"; else echo "❌ music.py missing"; exit 1; fi
+        if [ -f "xwing.ico" ]; then echo "✅ Icon file found"; else echo "❌ xwing.ico missing"; exit 1; fi
+        
+        # Check for image assets
+        images=("xwing.gif" "fire.gif" "starshot.gif" "tieshot.gif" "shot.gif" "roid.gif" "tie.gif" "tieb.gif" "tiei.gif" "tiea.gif" "tiefo.gif" "spinout.gif" "smoke.gif" "stard.gif" "rebel.gif" "controls.gif")
+        for img in "${images[@]}"; do
+          if [ -f "$img" ]; then echo "✅ $img found"; else echo "⚠️ $img missing"; fi
+        done
+        
+    - name: Convert icon for macOS
+      run: |
+        if [ -f "xwing.ico" ]; then
+          echo "Converting icon for macOS..."
+          python create_mac_icon.py xwing.ico xwing.icns
+        fi
+        
+        if [ ! -f "xwing.icns" ]; then
+          echo "Creating placeholder icon..."
+          python -c "
+from PIL import Image
+import os
+img = Image.new('RGBA', (512, 512), (0, 0, 0, 0))
+img.save('xwing.icns')
+"
+        fi
+        
+    - name: Build macOS app
+      run: |
+        python -m PyInstaller chuckstaroidsv5_mac.spec
+        
+    - name: Test the app
+      run: |
+        # Basic test - check if app was created
+        if [ -d "dist/ChuckSTARoids_v5.app" ]; then
+          echo "✅ macOS app created successfully!"
+          ls -la dist/
+        else
+          echo "❌ App creation failed"
+          exit 1
+        fi
+        
+    - name: Upload macOS app
+      uses: actions/upload-artifact@v3
+      with:
+        name: ChuckSTARoids-macOS
+        path: dist/ChuckSTARoids_v5.app
+        retention-days: 30
+        
+    - name: Create release (if tagged)
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: softprops/action-gh-release@v1
+      with:
+        files: dist/ChuckSTARoids_v5.app
+        draft: false
+        prerelease: false

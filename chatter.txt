@@ -1,0 +1,366 @@
+CHUCKSTEROIDS - GAMEPLAY MOMENTS WITH QUOTES
+============================================
+
+  
+  - Killing x UFOs 
+  10
+  20
+  30
+  60
+  - Killing x asteroids 
+128
+256
+
+
+
+  - "Red Five standing by." (Quote #1)
+
+
+
+- **UFO Spawning**: UFOs begin spawning based on level progression
+  - 
+  - "All wings report in." (Quote #65)
+
+- **Pause State**: Game can be paused with P key
+  - "Hold your fire! There's no life forms." (Quote #33)
+  - "Stay on target… stay on target…" (Quote #3)
+
+- **Death Delay**: Brief pause after ship destruction before respawn
+  - "I'm hit! I can't stay with you!" (Quote #4)
+
+- **Game Over Screen**: When all lives are lost
+  - "We're not going to make it!" (Quote #97)
+
+- **Restart Option**: R key to restart from beginning
+  - "Let's finish this." (Quote #100)
+
+## **Player Actions & Mechanics**
+### **Ship Movement**
+- **Thrust**: Up arrow for forward thrust with visual flame effect
+  - "Punch it!" (Quote #91)
+  - "Chewie, get us out of here!" (Quote #92)
+
+- **Strafe Left/Right**: A/D keys for lateral movement
+  - "Begin evasive maneuvers!" (Quote #81)
+
+- **Rapid Deceleration**: S key for quick stopping
+  - "I'm breaking off!" (Quote #46)
+  - "We're coming in too hot!" (Quote #95)
+
+### **Shooting System**
+- **Continuous Shooting**: Hold spacebar for rapid fire
+  - "Target locked. Firing!" (Quote #49)
+
+- **Rate of Fire Progression**: Shooting speed increases with sustained fire
+  - "I can hold it! I can hold it!" (Quote #8)
+  - "I'm going in." (Quote #5)
+  - "I've got a lock!" (Quote #44)
+
+### **Shield System**
+  - "I can hold it! I can hold it!" (Quote #8)
+  - "We're going to need reinforcements." (Quote #40)
+- **Shield Break**: Visual explosion when shields are depleted
+  - "I'm hit! Stabilizers failing!" (Quote #37)
+- **Invulnerability Period**: Brief invincibility after shield break
+  - "I'm going to try and outrun them." (Quote #96)
+
+### **Ability System**
+  - "We're going to need a miracle." (Quote #98)
+  - "Use the Force, Luke." (Quote #10)
+  - "I have you now." (Quote #12)
+- **Ability Recharge**: 5 seconds for first charge, 10 seconds for subsequent
+  - "The Force will be with you, always." (Quote #11)
+
+## **Enemy Systems**
+### **Asteroid Mechanics**
+- **Asteroid Sizes**: 9 different sizes (1-9) with varying speeds and hitboxes
+- **Asteroid Splitting**: Large asteroids split into smaller ones when destroyed
+  - "There's too many of them!" (Quote #19)
+  - "They're coming in too fast!" (Quote #43)
+- **Asteroid Collision**: Ship takes damage when hitting asteroids
+  - "I'm hit, but not bad." (Quote #23)
+
+### **UFO Enemies**
+  - "I can't shake him!" (Quote #20)
+  - "I'm taking heavy fire!" (Quote #29)
+
+- **UFO AI Personalities**: 5 different AI types (aggressive, defensive, tactical, swarm, deadly)
+  - "We've analyzed their attack and there is a danger." (Quote #13)
+- **UFO Movement Patterns**: Seek, flee, flank, patrol, intercept behaviors
+  - "I'm going to cut across the axis and try to draw their fire." (Quote #18)
+- **UFO Spawning**: Various spawn methods (corners, mass spawns, bursts)
+  -(Quote #83)
+- **UFO Spinout**: Special death animation with sparks and rotation
+- **UFO Collision**: Ship takes damage when hitting UFOs
+
+### **Boss Enemies**
+- **Boss Spawning**: Special bosses spawn at certain intervals
+  - "Deploy the fleet. We'll catch them in the act." (Quote #52)
+- **Boss Collision Detection**: Special collision handling for bosses
+  - "Target maximum firepower!" (Quote #53)
+- **Boss Movement**: Unique movement patterns for boss enemies
+  - "Prepare to fire!" (Quote #54)
+
+## **Combat & Collision**
+### **Bullet Collisions**
+- **Bullet vs Asteroid**: Bullets destroy asteroids and create explosions
+  - "Great shot, kid! That was one in a million!" (Quote #6)
+- **Bullet vs UFO**: Bullets destroy UFOs with special effects
+  - "I'm on the leader." (Quote #22)
+- **Bullet vs Boss**: Special collision handling for boss enemies
+  - "Concentrate all fire on that Star Destroyer!" (Quote #16)
+- **UFO Bullet vs Ship**: Enemy bullets can damage player ship
+
+### **Explosion Effects**
+- **Asteroid Explosions**: Particle effects when asteroids are destroyed
+- **UFO Explosions**: Special explosion effects for UFOs
+  - "I'm going to make a run for it!" (Quote #76)
+- **Ship Explosions**: Player ship explosion with particles
+  - "I'm hit! Ejecting!" (Quote #68)
+- **Rainbow Explosions**: Special colorful explosion effects
+  - "I'm going to light this place up!" (Quote #62)
+- **Screen Shake**: Camera shake during explosions
+  - "We're taking heavy losses!" (Quote #88)
+
+## **Scoring & Progression**
+
+### **Scoring System**
+- **Asteroid Points**: Different point values for different asteroid sizes
+- **UFO Points**: 200 points for destroying UFOs
+  - "I've got a visual on the target." (Quote #39)
+- **Combo Multiplier**: Score multiplier increases with rapid kills
+- **Multiplier Decay**: Combo multiplier decreases over time
+  - "They're regrouping!" (Quote #86)
+- **Score Milestones**: Special rewards at 250k, 500k, 1000k points
+
+### **Level Progression**
+- **Level Advance**: Advance to next level when all asteroids destroyed
+  - "We're starting our attack run." (Quote #25)
+- **Level Flash**: Visual effect during level transitions
+  - "Intensify forward firepower!" (Quote #55)
+- **Level Pause**: Brief pause between levels
+  - "All craft, pull up!" (Quote #14)
+- **Increasing Difficulty**: More asteroids and UFOs per level
+  - "We're outnumbered ten to one!" (Quote #47)
+
+### **Lives System**
+- **Life Loss**: Lose life when ship is destroyed
+  - "I've lost R2!" (Quote #9)
+- **Life Indicators**: Visual display of remaining lives
+  - "Red Leader standing by." (Quote #66)
+- **Extra Lives**: Gain extra life at 1000k points
+  - "Reinforcements are inbound!" (Quote #89)
+- **Game Over**: Game ends when all lives are lost
+  - "We've lost contact with Red Squadron." (Quote #87)
+
+## **Special Effects & Visual**
+
+### **Time Dilation System**
+- **Speed-Based Time**: Game speed changes based on player movement
+  - "I've got a bad feeling about this." (Quote #93)
+- **Shooting Time**: Time dilation affected by shooting actions
+  - "Never tell me the odds." (Quote #94)
+- **Turning Time**: Time dilation affected by ship rotation
+  - "I'm going to try and draw their fire." (Quote #28)
+- **Visual Feedback**: Screen effects show time dilation
+  - "We've got a breach in the hull!" (Quote #90)
+
+### **Particle Systems**
+- **Thrust Particles**: Flame effects behind ship when thrusting
+  - "I'm going in for the kill." (Quote #70)
+- **Explosion Particles**: Various particle effects for explosions
+  - "We've lost Blue Two!" (Quote #71)
+- **Ability Particles**: Special particles for ability activation
+  - "I'm breaking formation!" (Quote #72)
+- **Static Particles**: Background particle effects
+  - "We've got to hold them off!" (Quote #73)
+
+### **Screen Effects**
+- **Screen Shake**: Camera shake during explosions and impacts
+  - "I've got a lock on the target!" (Quote #74)
+- **Score Pulse**: Visual pulse when gaining points
+  - "We're losing power!" (Quote #75)
+- **Multiplier Pulse**: Visual effect when combo multiplier changes
+  - "They're jamming our signals!" (Quote #77)
+- **Level Flash**: Screen flash during level transitions
+  - "I'm going to draw their fire!" (Quote #78)
+
+## **Audio & Music**
+
+### **Sound Effects**
+- **Shooting Sounds**: Audio feedback for shooting
+  - "Lock S-foils in attack position." (Quote #2)
+- **Explosion Sounds**: Sound effects for various explosions
+  - "It's a trap!" (Quote #15)
+- **Ability Sounds**: Audio cues for ability activation
+  - "Buzz droids!" (Quote #32)
+- **Collision Sounds**: Sound effects for impacts
+  - "I'm going to help them out!" (Quote #34)
+
+### **Music System**
+- **Title Music**: Background music on title screen
+  - "We've got to give those fighters more time!" (Quote #17)
+- **Level Music**: Different music during gameplay
+  - "I'm going to intercept!" (Quote #48)
+- **Dynamic Music**: Music changes based on game state
+  - "We've got to get out of here!" (Quote #79)
+
+## **Debug & Special Features**
+
+### **Debug Mode**
+- **Hitbox Display**: Visual display of collision hitboxes
+  - "I've got a problem here." (Quote #26)
+- **Speed Display**: Shows player speed and time dilation
+  - "I'm losing power!" (Quote #27)
+- **Rate of Fire Display**: Shows shooting statistics
+  - "I'm going to try and draw their fire." (Quote #28)
+- **God Mode**: Invincibility for testing
+  - "I'm taking heavy fire!" (Quote #29)
+
+### **Special Abilities**
+- **Ability Break**: Special ability that affects game mechanics
+  - "I've got one on my tail!" (Quote #30)
+- **Shield Recharge**: Ability to instantly recharge shields
+  - "They're all over me!" (Quote #35)
+- **Time Manipulation**: Abilities that affect game speed
+  - "R4, get that stabilizer fixed!" (Quote #38)
+
+## **Game Events & Triggers**
+
+### **Milestone Events**
+- **250k Points**: Shield recharge reward
+  - "We've got to take out that cannon!" (Quote #69)
+- **500k Points**: Ability + shield recharge reward
+  - "I'm going in for the kill." (Quote #70)
+- **1000k Points**: Extra life reward
+  - "We've lost Blue Two!" (Quote #71)
+
+### **Collision Events**
+- **Ship vs Asteroid**: Damage and explosion
+  - "I'm breaking formation!" (Quote #72)
+- **Ship vs UFO**: Damage and explosion
+  - "We've got to hold them off!" (Quote #73)
+- **Bullet vs Enemy**: Destruction and scoring
+  - "I've got a lock on the target!" (Quote #74)
+- **UFO vs Asteroid**: UFOs avoid asteroids
+  - "We're losing power!" (Quote #75)
+
+### **Spawn Events**
+- **Asteroid Spawning**: New asteroids appear at level start
+  - "I'm going to make a run for it!" (Quote #76)
+- **UFO Spawning**: UFOs spawn based on level and timing
+  - "They're jamming our signals!" (Quote #77)
+- **Boss Spawning**: Special bosses appear at intervals
+  - "I'm going to draw their fire!" (Quote #78)
+- **Particle Spawning**: Various particle effects throughout gameplay
+  - "We've got to get out of here!" (Quote #79)
+
+## **Detailed Gameplay Flow**
+
+### **Title Screen Sequence**
+1. Game launches to title screen with "waiting" state
+   - "This is where the fun begins." (Quote #31)
+2. Star field background with animated stars
+   - "I'm going to light this place up!" (Quote #62)
+3. Title text with special visual effects
+   - "We've got multiple bogeys!" (Quote #50)
+4. Title screen UFOs spawn and move in sine wave patterns
+   - "We're not alone. Good people will fight if we lead them." (Quote #63)
+5. Virtual title ship moves around as an asteroid
+   - "I'm going to try something crazy." (Quote #80)
+6. Player can press keys to start game or access debug features
+   - "All wings report in." (Quote #65)
+
+### **Game Start Sequence**
+1. Star explosion effect triggers
+   - "I'm going to light this place up!" (Quote #62)
+2. Game state changes to "playing"
+   - "Red Five standing by." (Quote #1)
+3. Ship spawns at screen center
+   - "We've got incoming!" (Quote #61)
+4. Initial asteroids spawn around edges
+   - "We're not alone. Good people will fight if we lead them." (Quote #63)
+5. Music transitions from title to level music
+   - "All wings report in." (Quote #65)
+6. UFO spawning begins based on level
+   - "Launch fighters!" (Quote #83)
+7. Game start timer prevents immediate shooting
+   - "Hold your fire! There's no life forms." (Quote #33)
+
+### **Main Gameplay Loop**
+1. Handle input (movement, shooting, abilities)
+   - "Stay on target… stay on target…" (Quote #3)
+2. Update ship physics and position
+   - "I'm going to try a spinning maneuver." (Quote #41)
+3. Update all asteroids with rotation and movement
+   - "There's too many of them!" (Quote #19)
+4. Update all UFOs with AI behavior
+   - "We've analyzed their attack and there is a danger." (Quote #13)
+5. Update all bullets and check for collisions
+   - "Target locked. Firing!" (Quote #49)
+6. Check collision detection between all objects
+   - "Great shot, kid! That was one in a million!" (Quote #6)
+7. Update particle systems and effects
+   - "I'm going in for the kill." (Quote #70)
+8. Update scoring and multiplier systems
+   - "Great, kid, don't get cocky." (Quote #7)
+9. Update time dilation based on player speed
+   - "I've got a bad feeling about this." (Quote #93)
+10. Update screen shake and visual effects
+    - "I've got a lock on the target!" (Quote #74)
+11. Draw all game objects to screen
+    - "We're losing power!" (Quote #75)
+12. Check for level completion or game over conditions
+    - "We're not going to make it!" (Quote #97)
+
+### **Level Transition Sequence**
+1. All asteroids destroyed triggers level advance
+   - "We're starting our attack run." (Quote #25)
+2. Level flash effect plays
+   - "Intensify forward firepower!" (Quote #55)
+3. Level pause timer starts (2 seconds)
+   - "All craft, pull up!" (Quote #14)
+4. Score and multiplier are preserved
+   - "We've got them on the run!" (Quote #85)
+5. New asteroids spawn for next level
+   - "They're regrouping!" (Quote #86)
+6. UFO spawning parameters update
+   - "We're going to blow up the dreadnought!" (Quote #63)
+7. Level counter increments
+   - "We're starting our attack run." (Quote #25)
+8. Gameplay resumes
+   - "Stay on target… stay on target…" (Quote #3)
+
+### **Death Sequence**
+1. Ship collision with enemy triggers death
+   - "I'm hit! I can't stay with you!" (Quote #4)
+2. Ship explosion effect plays
+   - "I'm going to light this place up!" (Quote #62)
+3. Screen shake effect triggers
+   - "I've got a lock on the target!" (Quote #74)
+4. Lives counter decreases
+   - "I've lost R2!" (Quote #9)
+5. Death delay state begins
+   - "I'm hit! Ejecting!" (Quote #68)
+6. Ship respawns at center (if lives remain)
+   - "Red Five standing by." (Quote #1)
+7. Brief invulnerability period
+   - "I'm going to try and outrun them." (Quote #96)
+8. Gameplay resumes
+   - "Stay on target… stay on target…" (Quote #3)
+
+### **Game Over Sequence**
+1. All lives lost triggers game over
+   - "We're not going to make it!" (Quote #97)
+2. Game state changes to "game_over"
+   - "We've lost contact with Red Squadron." (Quote #87)
+3. Game over screen displays
+   - "We're taking heavy losses!" (Quote #88)
+4. Final score is shown
+   - "Great, kid, don't get cocky." (Quote #7)
+5. Player can press R to restart
+   - "Let's finish this." (Quote #100)
+6. Restart returns to title screen
+   - "This is where the fun begins." (Quote #31)
+
+This comprehensive list covers every major gameplay moment, mechanic, and event that occurs in Chucksteroids, from the initial title screen to the complex combat and progression systems, now enhanced with appropriate Star Wars quotes that match the context and intensity of each moment.

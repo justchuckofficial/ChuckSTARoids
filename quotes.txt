@@ -1,0 +1,116 @@
+1. “Red Five standing by.”  
+2. “Lock S-foils in attack position.”  
+3. “Stay on target… stay on target…”  
+4. “I’m hit! I can’t stay with you!”  
+5. “I’m going in.”  
+6. “Great shot, kid! That was one in a million!”  
+7. “Great, kid, don’t get cocky.”  
+8. “I can hold it! I can hold it!”  
+9. “I’ve lost R2!”  
+10. “Use the Force, Luke.”  
+11. “The Force will be with you, always.”  
+12. “I have you now.”  
+13. “We’ve analyzed their attack and there is a danger.”  
+14. “All craft, pull up!”  
+15. “It’s a trap!”  
+16. “Concentrate all fire on that Super Star Destroyer!”  
+17. “We’ve got to give those fighters more time!”  
+18. “I’m going to cut across the axis and try to draw their fire.”  
+19. “There’s too many of them!”  
+20. “I can’t shake him!”  
+21. “Cover me, I’m going in.”  
+22. “I’m on the leader.”  
+23. “I’m hit, but not bad.”  
+24. “That blast came from the Death Star!”  
+25. “We’re starting our attack run.”  
+26. “I’ve got a problem here.”  
+27. “I’m losing power!”  
+28. “I’m going to try and draw their fire.”  
+29. “I’m taking heavy fire!”  
+30. “I’ve got one on my tail!”  
+
+
+
+31. “This is where the fun begins.”  
+32. “Buzz droids!”  
+33. “Hold your fire! There’s no life forms.”  
+34. “I’m going to help them out!”  
+35. “They’re all over me!”  
+36. “We’ve got droids incoming!”  
+37. “I’m hit! Stabilizers failing!”  
+38. “R4, get that stabilizer fixed!”  
+39. “I’ve got a visual on the target.”  
+40. “We’re going to need reinforcements.”  
+41. “I’m going to try a spinning maneuver.”  
+42. “I’ve lost my wingman!”  
+43. “They’re coming in too fast!”  
+44. “I’ve got a lock!”  
+45. “Missiles incoming!”  
+46. “I’m breaking off!”  
+47. “We’re outnumbered ten to one!”  
+48. “I’m going to intercept!”  
+49. “Target locked. Firing!”  
+50. “We’ve got multiple bogeys!”  
+
+
+
+51. “You have failed me for the last time.”  
+52. “Deploy the fleet. We’ll catch them in the act.”  
+53. “Target maximum firepower!”  
+54. “Prepare to fire!”  
+55. “Intensify forward firepower!”  
+56. “The shield is down! Commence attack!”  
+57. “The Rebels are fleeing!”  
+58. “They’re trying to escape!”  
+59. “Send the fighters after them!”  
+60. “We’ll deal with them ourselves.”  
+
+
+
+61. “We’ve got incoming!”  
+62. “I’m going to light this place up!”  
+63. “We’re going to blow up the dreadnought!”  
+64. “We’re not alone. Good people will fight if we lead them.”  
+65. “All wings report in.”  
+66. “Black Leader standing by.”  
+67. “I’ve got a bogey on my six!”  
+68. “I’m hit! Ejecting!”  
+69. “We’ve got to take out that cannon!”  
+70. “I’m going in for the kill.”  
+71. “We’ve lost Blue Two!”  
+72. “I’m breaking formation!”  
+73. “We’ve got to hold them off!”  
+74. “I’ve got a lock on the target!”  
+75. “We’re losing power!”  
+76. “I’m going to make a run for it!”  
+77. “They’re jamming our signals!”  
+78. “I’m going to draw their fire!”  
+79. “We’ve got to get out of here!”  
+80. “I’m going to try something crazy.”  
+
+
+
+81. “Begin evasive maneuvers!”  
+82. “All ships, fire at will!”  
+83. “Launch fighters!”  
+84. “Prepare for hyperspace jump!”  
+85. “We’ve got them on the run!”  
+86. “They’re regrouping!”  
+87. “We’ve lost contact with Red Squadron.”  
+88. “We’re taking heavy losses!”  
+89. “Reinforcements are inbound!”  
+90. “We’ve got a breach in the hull!”  
+
+
+
+91. “Punch it!” — *Han Solo*  
+92. “Chewie, get us out of here!”  
+93. “I’ve got a bad feeling about this.”  
+94. “Never tell me the odds.”  
+95. “We’re coming in too hot!”  
+96. “I’m going to try and outrun them.”  
+97. “We’re not going to make it!”  
+98. “We’re going to need a miracle.”  
+99. “I’m going to try and disable their engines.”  
+100. “Let’s finish this.”
+
