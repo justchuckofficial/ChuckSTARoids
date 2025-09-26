@@ -2,6 +2,8 @@
 
 A cross-platform space shooter game built with Python and Pygame.
 
+🚀 **Automated builds now active!** Download the latest Windows and macOS versions from the [Actions](https://github.com/justchuckofficial/ChuckSTARoids_v5/actions) tab.
+
 ## 🎮 Game Features
 
 - **Classic Asteroids gameplay** with modern enhancements
