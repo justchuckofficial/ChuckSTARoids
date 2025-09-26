@@ -1,0 +1,105 @@
+name: Fixed Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    outputs:
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pyinstaller
+    
+    - name: Build Windows executable
+      run: |
+        pyinstaller chuckstaroidsv5.spec
+        ls -la dist/
+    
+    - name: Create Release
+      id: create_release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: ${{ github.ref_name }}
+        name: ChuckSTARoids ${{ github.ref_name }}
+        body: |
+          ## ChuckSTARoids ${{ github.ref_name }}
+          
+          ### Downloads
+          - **Windows**: ChuckSTARoids_v5.exe
+          - **macOS**: ChuckSTARoids_v5.dmg (coming soon)
+          
+          ### Controls
+          - Arrow keys to move
+          - Spacebar to shoot
+          - Build multipliers by chaining kills
+        files: dist/ChuckSTARoids_v5.exe
+        generate_release_notes: false
+        draft: false
+        prerelease: false
+        overwrite: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  build-macos:
+    runs-on: macos-latest
+    needs: build-windows
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pyinstaller
+    
+    - name: Build macOS app
+      run: |
+        pyinstaller chuckstaroidsv5_mac.spec
+        ls -la dist/
+    
+    - name: Create macOS DMG
+      run: |
+        brew install create-dmg
+        create-dmg \
+          --volname "ChuckSTARoids v5" \
+          --volicon "xwing.ico" \
+          --window-pos 200 120 \
+          --window-size 600 300 \
+          --icon-size 100 \
+          --icon "ChuckSTARoids_v5.app" 175 120 \
+          --hide-extension "ChuckSTARoids_v5.app" \
+          --app-drop-link 425 120 \
+          "ChuckSTARoids_v5.dmg" \
+          "dist/"
+    
+    - name: Upload macOS DMG
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ needs.build-windows.outputs.upload_url }}
+        asset_path: ChuckSTARoids_v5.dmg
+        asset_name: ChuckSTARoids_v5.dmg
+        asset_content_type: application/octet-stream
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
