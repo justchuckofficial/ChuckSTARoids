@@ -1,12 +1,16 @@
 # ChuckSTARoids v5
 
-🚀 **Download**: [Windows](https://github.com/justchuckofficial/ChuckSTARoids_v5/actions) | [macOS](https://github.com/justchuckofficial/ChuckSTARoids_v5/actions)
+🚀 **Download**: [Latest Release](https://github.com/justchuckofficial/ChuckSTARoids/releases/latest)
+
+**Available Downloads:**
+- **Windows**: `ChuckSTARoids_v5.exe`
+- **macOS**: `ChuckSTARoids_v5.dmg` (coming soon)
 
 ---
 
 ## 🎮 Controls
 
-![Controls](controls.gif)
+![Controls](assets/controls.gif)
 
 ---
 
@@ -26,7 +30,7 @@
 ---
 
 ## Enemy Points
-<img src="tie.gif" width="32" height="32"> <img src="tieb.gif" width="32" height="32"> <img src="tiei.gif" width="32" height="32"> <img src="tiea.gif" width="32" height="32"> <img src="tiefo.gif" width="32" height="32">
+<img src="assets/tie.gif" width="32" height="32"> <img src="assets/tieb.gif" width="32" height="32"> <img src="assets/tiei.gif" width="32" height="32"> <img src="assets/tiea.gif" width="32" height="32"> <img src="assets/tiefo.gif" width="32" height="32">
 
 - **UFO Shot**: 500 points
 - **UFO Collision**: 200-250 points
@@ -49,3 +53,21 @@
 5. **Survive** as long as possible!
 
 **System Requirements**: Windows 10+ or macOS 10.13+
+
+---
+
+## 📁 Repository Structure
+
+- **`/source/`** - Source code and build files
+- **`/assets/`** - Game assets (images, sprites, icons)
+- **`/executables/`** - Built executable files
+- **`/chucksteroids_env/`** - Python virtual environment
+
+---
+
+## 🔧 Development
+
+To build from source:
+1. Install Python 3.11+
+2. Install dependencies: `pip install -r requirements.txt`
+3. Run: `python source/chuckstaroidsv5.py`
