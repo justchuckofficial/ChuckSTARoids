@@ -10,25 +10,25 @@
 
 ---
 
-## 🎯 Asteroid Points (Based on Size)
-- **Size 1 (XXS)**: 11 points
-- **Size 2 (XXS)**: 22 points  
-- **Size 3 (XS)**: 33 points
-- **Size 4 (S)**: 44 points
-- **Size 5 (M)**: 55 points
-- **Size 6 (L)**: 66 points
-- **Size 7 (XL)**: 77 points
-- **Size 8 (XXL)**: 88 points
-- **Size 9 (XXXL)**: 99 points
+## Asteroid Points (Based on Size)
+![Asteroid](roid.gif) **Size 1 (XXS)**: 11 points  
+![Asteroid](roid.gif) **Size 2 (XXS)**: 22 points  
+![Asteroid](roid.gif) **Size 3 (XS)**: 33 points  
+![Asteroid](roid.gif) **Size 4 (S)**: 44 points  
+![Asteroid](roid.gif) **Size 5 (M)**: 55 points  
+![Asteroid](roid.gif) **Size 6 (L)**: 66 points  
+![Asteroid](roid.gif) **Size 7 (XL)**: 77 points  
+![Asteroid](roid.gif) **Size 8 (XXL)**: 88 points  
+![Asteroid](roid.gif) **Size 9 (XXXL)**: 99 points
 
 ---
 
-## 👾 Enemy Points
-- **UFO Shot**: 500 points
-- **UFO Collision**: 200-250 points
-- **UFO Spinout**: 200-250 points
-- **Ability Asteroid**: 100 points
-- **Ability UFO**: 200 points
+## TIE Fighter Points
+<img src="tie.gif" width="32" height="32"> **TIE Fighter**: 500 points  
+<img src="tieb.gif" width="32" height="32"> **TIE Bomber**: 500 points  
+<img src="tiei.gif" width="32" height="32"> **TIE Interceptor**: 500 points  
+<img src="tiea.gif" width="32" height="32"> **TIE Advanced**: 500 points  
+<img src="tiefo.gif" width="32" height="32"> **TIE Fighter (Fleet)**: 500 points
 
 ---
 
