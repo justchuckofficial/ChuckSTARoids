@@ -8,30 +8,33 @@ A Star Wars-themed Asteroids game with advanced AI and scoring systems.
 
 ## 🎮 Controls
 
-| Key | Action |
-|-----|--------|
-| **↑ Arrow** | Thrust forward |
-| **← → Arrows** | Rotate ship |
-| **Spacebar** | Fire weapons |
-| **P** | Pause game |
-| **ESC** | Return to menu |
+![Controls](controls.gif)
 
 ---
 
 ## 🎯 Points & Scoring
 
-### **Base Points**
-- **Small Asteroid**: 20 points
-- **Medium Asteroid**: 50 points  
-- **Large Asteroid**: 100 points
-- **TIE Fighter**: 500 points
-- **Advanced TIE**: 1000 points
-- **UFO Boss**: 2000 points
-- **Massive Boss**: 5000+ points
+### **Asteroid Points** (Based on Size)
+- **Size 1 (XXS)**: 11 points
+- **Size 2 (XXS)**: 22 points  
+- **Size 3 (XS)**: 33 points
+- **Size 4 (S)**: 44 points
+- **Size 5 (M)**: 55 points
+- **Size 6 (L)**: 66 points
+- **Size 7 (XL)**: 77 points
+- **Size 8 (XXL)**: 88 points
+- **Size 9 (XXXL)**: 99 points
+
+### **Enemy Points**
+- **UFO Shot**: 500 points
+- **UFO Collision**: 200-250 points
+- **UFO Spinout**: 200-250 points
+- **Ability Asteroid**: 100 points
+- **Ability UFO**: 200 points
 
 ### **Score Multipliers**
-- **Chain destructions** to build multipliers (up to 10x)
-- **Multiplier decay** starts after 0.5 seconds of no kills
+- **Chain destructions** to build multipliers
+- **Decay delay**: 0.5 seconds before decay starts
 - **Decay duration**: 5 seconds to return to 1.0x
 - **Visual pulse effect** when multiplier increases
 
@@ -49,16 +52,6 @@ A Star Wars-themed Asteroids game with advanced AI and scoring systems.
 - **Auto-recharge** - 3 seconds per shield layer
 - **Visual feedback** - Color-coded shield status
 - **Damage effects** - Screen shake and visual indicators
-
----
-
-## 🤖 Enemy AI Types
-
-1. **Aggressive** - Direct attacks, high aggression
-2. **Defensive** - Evasive maneuvers, calculated strikes
-3. **Tactical** - Formation flying, coordinated attacks  
-4. **Swarm** - Group behavior, overwhelming numbers
-5. **Deadly** - Advanced targeting, lethal precision
 
 ---
 
