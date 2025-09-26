@@ -23,10 +23,8 @@ MANIFEST
 
 # PyInstaller
 *.manifest
-*.spec
 
 # Virtual environments
-chucksteroids_env/
 venv/
 env/
 ENV/
@@ -57,6 +55,4 @@ temp_build/
 # Keep important files
 !chuckstaroidsv5.spec
 !chuckstaroidsv5_mac.spec
-!build_*.bat
-!build_*.sh
 !requirements.txt

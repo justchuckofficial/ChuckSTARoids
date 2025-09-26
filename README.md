@@ -1,60 +1,63 @@
-# Asteroids Deluxe
+# ChuckSTARoids v5
 
-A faithful reproduction of the classic arcade game Asteroids Deluxe, built with Python and Pygame.
+A cross-platform space shooter game built with Python and Pygame.
 
-## Features
+## 🎮 Game Features
 
-- **Complete Gameplay**: All original game mechanics including ship movement, rotation, thrust, and shooting
-- **Asteroid System**: Multiple asteroid sizes that split when destroyed
-- **UFO Enemies**: AI-controlled UFOs that shoot at the player
-- **Collision Detection**: Accurate collision detection between all game objects
-- **Scoring System**: Points for destroying asteroids and UFOs
-- **Lives System**: Multiple lives with invulnerability periods
-- **Level Progression**: Advance to next level when all asteroids are destroyed
-- **Windows GUI**: Clean interface with control instructions
+- **Classic Asteroids gameplay** with modern enhancements
+- **Star Wars themed** graphics and sound
+- **Enhanced music system** with dynamic audio
+- **Cross-platform** - runs on Windows and macOS
+- **Standalone executables** - no dependencies required
 
-## Installation
+## 🚀 Quick Start
 
-1. Install Python 3.7 or higher
-2. Install required dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+### Download Latest Release
+- **Windows**: Download `ChuckSTARoids_v5.exe` from [Releases](https://github.com/justchuckofficial/ChuckSTARoids_v5/releases)
+- **macOS**: Download `ChuckSTARoids_v5.app` from [Releases](https://github.com/justchuckofficial/ChuckSTARoids_v5/releases)
 
-## Running the Game
+### System Requirements
+- **Windows**: Windows 10 or later
+- **macOS**: macOS 10.13 (High Sierra) or later
 
-```bash
-python asteroids_deluxe.py
+## 🛠️ Development
+
+### Building from Source
+This repository includes automated builds for both platforms:
+
+1. **Clone the repository**
+2. **Install dependencies**: `pip install -r requirements.txt`
+3. **Run the game**: `python chuckstaroidsv5.py`
+
+### Automated Builds
+- **Windows builds** are created automatically on every push
+- **macOS builds** are created automatically on every push
+- **Download builds** from the Actions tab
+
+## 📁 Project Structure
+
+```
+├── chuckstaroidsv5.py          # Main game file
+├── music.py                    # Music system
+├── requirements.txt            # Python dependencies
+├── xwing.ico                   # Windows icon
+├── *.gif, *.jpg, *.png        # Game assets
+├── chuckstaroidsv5.spec       # Windows build config
+├── chuckstaroidsv5_mac.spec   # macOS build config
+├── create_mac_icon.py         # Icon converter utility
+└── .github/workflows/         # Automated build workflows
 ```
 
-## Controls
+## 🎯 Controls
 
-- **Arrow Keys**: Rotate ship left/right and thrust forward
-- **Spacebar**: Shoot bullets
-- **R**: Restart game (when game over)
-- **P**: Pause game
+- **Arrow Keys**: Move ship
+- **Spacebar**: Fire
+- **Other controls**: See in-game instructions
 
-## Gameplay
+## 📄 License
 
-- Destroy all asteroids to advance to the next level
-- Avoid collisions with asteroids and UFOs
-- UFOs will shoot at your ship - avoid their bullets!
-- Each level has more asteroids than the previous one
-- You have 3 lives - use them wisely!
+This project is open source. See the repository for details.
 
-## Scoring
+---
 
-- Large Asteroid: 100 points
-- Medium Asteroid: 50 points  
-- Small Asteroid: 25 points
-- UFO: 200 points
-
-## Technical Details
-
-- Built with Python 3 and Pygame
-- 60 FPS gameplay
-- Vector-based physics
-- Screen wrapping for seamless movement
-- Threaded game loop for smooth GUI integration
-
-Enjoy the classic arcade experience!
+**Enjoy the game!** 🚀
