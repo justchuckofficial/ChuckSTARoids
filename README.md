@@ -11,15 +11,19 @@
 ---
 
 ## Asteroid Points (Based on Size)
-<img src="roid.gif" width="16" height="16"> **Size 1 (XXS)**: 11 points  
-<img src="roid.gif" width="16" height="16"> **Size 2 (XXS)**: 22 points  
-<img src="roid.gif" width="16" height="16"> **Size 3 (XS)**: 33 points  
-<img src="roid.gif" width="16" height="16"> **Size 4 (S)**: 44 points  
-<img src="roid.gif" width="16" height="16"> **Size 5 (M)**: 55 points  
-<img src="roid.gif" width="16" height="16"> **Size 6 (L)**: 66 points  
-<img src="roid.gif" width="16" height="16"> **Size 7 (XL)**: 77 points  
-<img src="roid.gif" width="16" height="16"> **Size 8 (XXL)**: 88 points  
-<img src="roid.gif" width="16" height="16"> **Size 9 (XXXL)**: 99 points
+<img src="roid.gif" width="16" height="16">
+
+| Size | Points |
+|------|--------|
+| 1 (XXS) | 11 |
+| 2 (XXS) | 22 |
+| 3 (XS) | 33 |
+| 4 (S) | 44 |
+| 5 (M) | 55 |
+| 6 (L) | 66 |
+| 7 (XL) | 77 |
+| 8 (XXL) | 88 |
+| 9 (XXXL) | 99 |
 
 ---
 
@@ -28,9 +32,6 @@
 
 - **UFO Shot**: 500 points
 - **UFO Collision**: 200-250 points
-- **UFO Spinout**: 200-250 points
-- **Ability Asteroid**: 100 points
-- **Ability UFO**: 200 points
 
 ---
 
