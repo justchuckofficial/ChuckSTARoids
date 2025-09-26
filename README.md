@@ -37,7 +37,6 @@
 - **25,000 points** → Shield recharge
 - **100,000 points** → Shield + ability recharge
 - **250,000 points** → Extra life + full recharges
-- **Every 250k** → Additional life (max 5 lives)
 
 ---
 
