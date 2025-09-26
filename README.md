@@ -25,19 +25,6 @@
 
 ---
 
-## 🚀 Ship Speed & Acceleration
-- **Thrust Power**: 281.25 units/sec²
-- **Max Speed**: 1,000,000,000 units/sec (effectively unlimited)
-- **Speed Decay**: 72.5% per second (exponential decay)
-- **Rotation Speed**: 5 degrees/sec
-- **Acceleration Multiplier**: 
-  - Below 50% speed: +25% boost
-  - 50-90% speed: Linear decrease from 100% to 1%
-  - 90-100% speed: Linear increase from 1% to 100%
-  - At/above 100% speed: 100% normal
-
----
-
 ## Enemy Points
 <img src="tie.gif" width="32" height="32"> <img src="tieb.gif" width="32" height="32"> <img src="tiei.gif" width="32" height="32"> <img src="tiea.gif" width="32" height="32"> <img src="tiefo.gif" width="32" height="32">
 
