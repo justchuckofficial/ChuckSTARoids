@@ -11,19 +11,25 @@
 ---
 
 ## Asteroid Points (Based on Size)
-<img src="roid.gif" width="16" height="16">
-
-| Size | Points |
-|------|--------|
-| 1 (XXS) | 11 |
-| 2 (XXS) | 22 |
-| 3 (XS) | 33 |
-| 4 (S) | 44 |
-| 5 (M) | 55 |
-| 6 (L) | 66 |
-| 7 (XL) | 77 |
-| 8 (XXL) | 88 |
-| 9 (XXXL) | 99 |
+<div style="display: flex; align-items: center; gap: 20px;">
+  <div>
+    <table>
+      <tr><th>Size</th><th>Points</th></tr>
+      <tr><td>1 (XXS)</td><td>11</td></tr>
+      <tr><td>2 (XXS)</td><td>22</td></tr>
+      <tr><td>3 (XS)</td><td>33</td></tr>
+      <tr><td>4 (S)</td><td>44</td></tr>
+      <tr><td>5 (M)</td><td>55</td></tr>
+      <tr><td>6 (L)</td><td>66</td></tr>
+      <tr><td>7 (XL)</td><td>77</td></tr>
+      <tr><td>8 (XXL)</td><td>88</td></tr>
+      <tr><td>9 (XXXL)</td><td>99</td></tr>
+    </table>
+  </div>
+  <div>
+    <img src="roid.gif" width="32" height="72">
+  </div>
+</div>
 
 ---
 
