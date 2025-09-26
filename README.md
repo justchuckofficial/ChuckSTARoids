@@ -51,23 +51,3 @@
 3. **Use arrow keys** to move and spacebar to shoot
 4. **Build multipliers** by chaining kills
 5. **Survive** as long as possible!
-
-**System Requirements**: Windows 10+ or macOS 10.13+
-
----
-
-## 📁 Repository Structure
-
-- **`/source/`** - Source code and build files
-- **`/assets/`** - Game assets (images, sprites, icons)
-- **`/executables/`** - Built executable files
-- **`/chucksteroids_env/`** - Python virtual environment
-
----
-
-## 🔧 Development
-
-To build from source:
-1. Install Python 3.11+
-2. Install dependencies: `pip install -r requirements.txt`
-3. Run: `python source/chuckstaroidsv5.py`
