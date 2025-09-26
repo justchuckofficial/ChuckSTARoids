@@ -5,6 +5,8 @@ on:
     tags:
       - 'v*'
   workflow_dispatch:
+  release:
+    types: [published]
 
 jobs:
   build-windows:
@@ -97,14 +99,21 @@ jobs:
         name: ChuckSTARoids-macOS
         path: ./release-assets
     
-    - name: Create Release
+    - name: List files for debugging
+      run: |
+        ls -la ./release-assets/
+        find ./release-assets -name "*.exe" -o -name "*.dmg"
+    
+    - name: Create or Update Release
       uses: softprops/action-gh-release@v1
       with:
+        tag_name: ${{ github.ref_name }}
         files: |
           ./release-assets/ChuckSTARoids_v5.exe
           ./release-assets/ChuckSTARoids_v5.dmg
         generate_release_notes: true
         draft: false
         prerelease: false
+        overwrite: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
